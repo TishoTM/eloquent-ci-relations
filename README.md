@@ -1,5 +1,9 @@
 # Eloquent case-insensitive relations
 
+<p align="left">
+<a href="https://travis-ci.org/TishoTM/eloquent-ci-relations"><img src="https://api.travis-ci.org/TishoTM/eloquent-ci-relations.svg?branch=master" alt="Build Status"></a>
+</p>
+
 Using Eloquent out of the box on case-insensitive collation databases could potentially return incomplete collection of items
 if the foreign keys are set as strings and they differ in terms of uppercase vs lowercase.
 On eager loaded relations Eloquent builds a dictionary of the parent models and associates their related models by their keys.
