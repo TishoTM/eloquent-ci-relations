@@ -2,7 +2,7 @@
 
 Using Eloquent out of the box on case-insensitive collation databases could potentially return incomplete collection of items
 if the foreign keys are set as strings and they differ in terms of uppercase vs lowercase.
-Eloquent builds a dictionary of the parent models and associates their related models by their keys.
+On eager loaded relations Eloquent builds a dictionary of the parent models and associates their related models by their keys.
 PHP is case-sensitive and therefore if the keys are different, then some of the related models will not be returned.
 
 Example:
@@ -33,9 +33,13 @@ Example:
 
 `Item::with('tags')->find('aaa');`
 
-**The related tags would include only the "tag 2" event if the the BD collation is case-insensitive and the returned data includes "tag 1".**
+The related tags would include only the "tag 2" even if the the DB collation is case-insensitive and the returned query data includes "tag 1".
 
-**With the case insensitive relations: The related tags would include both "tag 1" and "tag 2".**
+**With case insensitive relations:** The related tags would include both "tag 1" and "tag 2".
+
+## Requirements
+
+- illuminate/database > 5.5
 
 ## Installation
 
@@ -43,8 +47,7 @@ Example:
 
 ## Usage
 
-```
-<?php
+```PHP
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -55,3 +58,7 @@ class Item extends Model
     ... relations
 }
 ```
+
+## License
+
+[MIT license](https://opensource.org/licenses/MIT).
