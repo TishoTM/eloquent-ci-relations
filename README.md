@@ -8,6 +8,7 @@ PHP is case-sensitive and therefore if the keys are different, then some of the 
 Example:
 
 **Items table**
+
 | uuid | name |
 | --- | --- |
 | aaa | First |
@@ -15,6 +16,7 @@ Example:
 | ccc | Third |
 
 **Tags table**
+
 | id | label |
 | --- | --- |
 | 1 | tag 1 |
@@ -22,6 +24,7 @@ Example:
 | 3 | tag 3 |
 
 **item_tag table**
+
 | item_uuid | tag_id |
 | --- | --- |
 | AAA | 1 |
