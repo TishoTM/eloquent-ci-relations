@@ -4,6 +4,7 @@ Using Eloquent out of the box on case-insensitive collation databases could pote
 if the foreign keys are set as strings and they differ in terms of uppercase vs lowercase.
 On eager loaded relations Eloquent builds a dictionary of the parent models and associates their related models by their keys.
 PHP is case-sensitive and therefore if the keys are different, then some of the related models will not be returned.
+This package simply normalizes the dictionary keys into lowercase.
 
 Example:
 
@@ -39,7 +40,7 @@ The related tags would include only the "tag 2" even if the the DB collation is 
 
 ## Requirements
 
-- illuminate/database > 5.5
+- illuminate/database 5.5.*, 5.6.*, 5.7.*
 
 ## Installation
 
