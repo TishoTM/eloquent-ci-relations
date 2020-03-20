@@ -34,11 +34,17 @@ class MorphTo extends EloquentMorphTo
      */
     protected function matchToMorphParents($type, Collection $results)
     {
+        // It is hacky but there is no reliable and efficient
+        // way to determine the eloquent version installed
+        // in version <= 5.7 name of the relation is set in the `relation` property
+        // in version >= 5.8 the name of the relation is set in the `relationName` property
+        // for Eloquent version     5.7 ?? 5.8
+        $relationName = $this->relation ?? $this->relationName;
         foreach ($results as $result) {
             $key = $this->normalizeDictionaryKey($result->getKey());
             if (isset($this->dictionary[$type][$key])) {
                 foreach ($this->dictionary[$type][$key] as $model) {
-                    $model->setRelation($this->relation, $result);
+                    $model->setRelation($relationName, $result);
                 }
             }
         }

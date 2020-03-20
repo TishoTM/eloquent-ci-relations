@@ -48,10 +48,23 @@ class HasManyThrough extends EloquentHasManyThrough
         // relationship as this will allow us to quickly access all of the related
         // models without having to do nested looping which will be quite slow.
         foreach ($results as $result) {
-            $normalizedKey = $this->normalizeDictionaryKey($result->{$this->firstKey});
+            $normalizedKey = $this->ciNormalizedDictionaryKey($result);            
             $dictionary[$normalizedKey][] = $result;
         }
 
         return $dictionary;
+    }
+
+    /**
+     * @param  Model  $result
+     * @return string
+     */
+    private function ciNormalizedDictionaryKey($result)
+    {
+        // It is hacky but there is no reliable and efficient
+        // way to determine the eloquent version installed
+        // for Eloquent version       >=5.8 ?? <=5.7
+        $key = $result->laravel_through_key ?? $result->{$this->firstKey};
+        return $this->normalizeDictionaryKey($key);
     }
 }
