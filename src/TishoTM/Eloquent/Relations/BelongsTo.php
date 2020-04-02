@@ -35,7 +35,7 @@ class BelongsTo extends EloquentBelongsTo
         // and match back onto their children using these keys of the dictionary and
         // the primary key of the children to map them onto the correct instances.
         foreach ($models as $model) {
-            if (isset($dictionary[$model->{$foreign}])) {
+            if (isset($dictionary[$this->normalizeDictionaryKey($model->{$foreign})])) {
                 $model->setRelation($relation, $dictionary[$this->normalizeDictionaryKey($model->{$foreign}) ]);
             }
         }
