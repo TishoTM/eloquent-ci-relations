@@ -9,6 +9,9 @@ use TishoTM\Tests\NoteCi;
 use TishoTM\Tests\Comment;
 use TishoTM\Tests\CommentCi;
 
+/**
+ * @runTestsInSeparateProcesses
+ */
 class MorphManyMorphToTest extends TestBase
 {
     public function setUp()
@@ -44,6 +47,10 @@ class MorphManyMorphToTest extends TestBase
         )');        
     }
 
+    /**
+     * Test MorphTo
+     * @test
+     */
     public function testRetrieveMorphTo()
     {
         $item = Item::create([
@@ -75,6 +82,10 @@ class MorphManyMorphToTest extends TestBase
         $this->assertNotNull($commentCi->commentable);
     }
 
+    /**
+     * Test MorphMany
+     * @test
+     */ 
     public function testRetrieveMorphMany()
     {
         $AAA = Item::create([

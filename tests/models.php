@@ -3,6 +3,20 @@ namespace TishoTM\Tests;
 
 use Illuminate\Database\Eloquent\Model;
 
+class Todo extends Model
+{
+    public $table = 'todos';
+    protected $guarded = [];
+    protected $primaryKey = 'key';
+    protected $keyType = 'string';
+    public $incrementing = false;
+
+    public function itemMeta()
+    {
+        return $this->hasOneThrough(Meta::class, Item::class, 'todo_key', 'item_uuid', 'key', 'uuid');
+    }
+}
+
 class Item extends Model
 {
     public $table = 'items';
@@ -68,12 +82,21 @@ class Item extends Model
             'key', // relatedKey
             $inverse = false);  // inverse
     }
+
+    public function color()
+    {
+        return $this->morphOne(Color::class, 'colorable', 'colorable_type', 'colorable_key', 'uuid');
+    }
 }
 
 class Note extends Model
 {
     public $table = 'notes';
-    protected $guarded = ['id']; 
+    protected $guarded = ['id'];
+
+    protected $primaryKey = 'key';
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     public function item()
     {
@@ -104,7 +127,23 @@ class Note extends Model
             'commentable_type',
             'commentable_uuid',
             'key');
-    }    
+    }  
+
+    public function color()
+    {
+        return $this->morphOne(Color::class, 'colorable', 'colorable_type', 'colorable_key', 'key');
+    }
+}
+
+class Color extends Model
+{
+    public $table = 'colors';
+    protected $guarded = ['id'];
+
+    public function colorable()
+    {
+        return $this->morphTo(__FUNCTION__, 'colorable_type', 'colorable_key');
+    }
 }
 
 class Keyword extends Model
@@ -161,6 +200,11 @@ class Tag extends Model
 
 // Case-insensitive relationships
 
+class TodoCi extends Todo
+{
+    use \TishoTM\Eloquent\Concerns\HasCiRelationships;
+}
+
 class ItemCi extends Item
 {
     use \TishoTM\Eloquent\Concerns\HasCiRelationships;
@@ -192,6 +236,11 @@ class TagCi extends Tag
 }
 
 class CommentCi extends Comment
+{
+    use \TishoTM\Eloquent\Concerns\HasCiRelationships;
+}
+
+class ColorCi extends Color
 {
     use \TishoTM\Eloquent\Concerns\HasCiRelationships;
 }

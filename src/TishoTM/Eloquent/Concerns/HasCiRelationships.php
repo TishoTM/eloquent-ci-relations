@@ -6,6 +6,7 @@ use TishoTM\Eloquent\Relations\BelongsToMany;
 use TishoTM\Eloquent\Relations\HasMany;
 use TishoTM\Eloquent\Relations\HasManyThrough;
 use TishoTM\Eloquent\Relations\HasOne;
+use TishoTM\Eloquent\Relations\HasOneThrough;
 use TishoTM\Eloquent\Relations\MorphMany;
 use TishoTM\Eloquent\Relations\MorphOne;
 use TishoTM\Eloquent\Relations\MorphTo;
@@ -92,7 +93,24 @@ trait HasCiRelationships
     protected function newHasOne(Builder $query, Model $parent, $foreignKey, $localKey)
     {
         return new HasOne($query, $parent, $foreignKey, $localKey);
-    }   
+    }
+
+    /**
+     * Instantiate a new HasOneThrough relationship.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  \Illuminate\Database\Eloquent\Model  $farParent
+     * @param  \Illuminate\Database\Eloquent\Model  $throughParent
+     * @param  string  $firstKey
+     * @param  string  $secondKey
+     * @param  string  $localKey
+     * @param  string  $secondLocalKey
+     * @return \Illuminate\Database\Eloquent\Relations\HasOneThrough
+     */
+    protected function newHasOneThrough(Builder $query, Model $farParent, Model $throughParent, $firstKey, $secondKey, $localKey, $secondLocalKey)
+    {
+        return new HasOneThrough($query, $farParent, $throughParent, $firstKey, $secondKey, $localKey, $secondLocalKey);
+    }
 
     /**
      * Instantiate a new MorphMany relationship.

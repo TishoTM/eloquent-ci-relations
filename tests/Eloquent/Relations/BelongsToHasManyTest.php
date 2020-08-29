@@ -7,8 +7,14 @@ use TishoTM\Tests\ItemCi;
 use TishoTM\Tests\Note;
 use TishoTM\Tests\NoteCi;
 
+/**
+ * @runTestsInSeparateProcesses
+ */
 class BelongsToHasManyTest extends TestBase
 {
+    /**
+     * Set up the DB tables.
+     */
     public function setUp()
     {
         parent::setUp();
@@ -34,6 +40,7 @@ class BelongsToHasManyTest extends TestBase
     }
 
     /**
+     * Test BelongsTo
      * @test
      */
     public function testRetrieveParent()
@@ -50,16 +57,18 @@ class BelongsToHasManyTest extends TestBase
             'item_uuid' => 'aaa',
         ]);
 
-        $note1 = Note::with('item')->find($note->id);
+        $note1 = Note::with('item')->find('NOTE-1');
         $this->assertNull($note1->item);
 
-        $note2 = NoteCi::with('item')->find($note->id);
+        $note2 = NoteCi::with('item')->find('NOTE-1');
+        $this->assertNotNull($note2->item);
 
         $this->assertSame($item->uuid, $note2->item->uuid); // AAA vs. AAA
         $this->assertNotSame($item->uuid, $note2->item_uuid); // AAA vs. aaa
     }
 
     /**
+     * Test HasMany
      * @test
      */
     public function testRetrieveChildren()

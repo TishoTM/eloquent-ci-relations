@@ -41,7 +41,10 @@ class MorphTo extends EloquentMorphTo
         // for Eloquent version     5.7 ?? 5.8
         $relationName = $this->relation ?? $this->relationName;
         foreach ($results as $result) {
-            $key = $this->normalizeDictionaryKey($result->getKey());
+
+            $ownerKey = ! is_null($this->ownerKey) ? $result->{$this->ownerKey} : $result->getKey();
+            $key = $this->normalizeDictionaryKey($ownerKey);
+
             if (isset($this->dictionary[$type][$key])) {
                 foreach ($this->dictionary[$type][$key] as $model) {
                     $model->setRelation($relationName, $result);

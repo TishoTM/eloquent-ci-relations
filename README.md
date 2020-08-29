@@ -44,7 +44,7 @@ The related tags would include only the "tag 2" even if the the DB collation is 
 
 ## Requirements
 
-- illuminate/database 5.5.\*, 5.6.\*, 5.7.\*, 5.8.\*, 6.\*, 7.\*
+- illuminate/database 5.5.33 and up, 5.6.\*, 5.7.\*, 5.8.\*, 6.\*, 7.\*
 
 ## Installation
 

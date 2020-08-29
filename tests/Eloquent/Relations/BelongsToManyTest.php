@@ -7,8 +7,14 @@ use TishoTM\Tests\ItemCi;
 use TishoTM\Tests\Tag;
 use TishoTM\Tests\TagCi;
 
+/**
+ * @runTestsInSeparateProcesses
+ */
 class BelongsToManyTest extends TestBase
 {
+    /**
+     * Set up the DB tables.
+     */
     public function setUp()
     {
         parent::setUp();
@@ -37,6 +43,7 @@ class BelongsToManyTest extends TestBase
     }
 
     /**
+     * Test BelongsToMany
      * @test
      */
     public function testRetrieveRelatedRecordsWithStringKey()

@@ -7,8 +7,14 @@ use TishoTM\Tests\Note;
 use TishoTM\Tests\ItemCi;
 use TishoTM\Tests\Keyword;
 
+/**
+ * @runTestsInSeparateProcesses
+ */
 class HasManyThroughTest extends TestBase
 {
+    /**
+     * Set up the DB tables.
+     */
     public function setUp()
     {
         parent::setUp();
@@ -42,6 +48,7 @@ class HasManyThroughTest extends TestBase
     }
 
     /**
+     * Test HasManyThrough
      * @test
      */
     public function testRetrieveManyThrough()

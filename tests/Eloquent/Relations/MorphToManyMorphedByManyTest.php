@@ -11,10 +11,16 @@ use TishoTM\Tests\TagCi;
 
 use Illuminate\Database\Eloquent\Relations\Relation;
 
+/**
+ * @runTestsInSeparateProcesses
+ */
 class MorphToManyMorphedByManyTest extends TestBase
 {
     protected $data = [];
 
+    /**
+     * Set up the DB tables.
+     */
     public function setUp()
     {
         parent::setUp();
@@ -56,6 +62,9 @@ class MorphToManyMorphedByManyTest extends TestBase
         $this->seedData();
     }
 
+    /**
+     * Seed the data.
+     */
     protected function seedData()
     {
         $this->data['item'] = $item = Item::create([
@@ -100,6 +109,7 @@ class MorphToManyMorphedByManyTest extends TestBase
     }
 
     /**
+     * Test MorphToMany
      * @test
      */
     public function testRetrieveMorphToMany()
@@ -138,6 +148,10 @@ class MorphToManyMorphedByManyTest extends TestBase
         $this->assertEquals($tag2->key, $AAAci->morphed_tags[1]->pivot->tag_key);
     }
 
+    /**
+     * Test MorphedByMany
+     * @test
+     */
     public function testRetrieveMorphedByMany()
     {
         $item = $this->data['item'];
