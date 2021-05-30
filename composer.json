@@ -2,7 +2,7 @@
     "name": "tishotm/eloquent-ci-relations",
     "description": "Eloquent case-insensitive relations",
     "require": {
-    "illuminate/database": "^5.5.33 || ~6.0 || ~7.0 || ~8.0"
+        "illuminate/database": "^5.5.33 || ^6.20.26 || ~7.0 || ~8.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~6.0",
