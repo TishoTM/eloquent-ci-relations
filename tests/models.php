@@ -15,6 +15,16 @@ class Todo extends Model
     {
         return $this->hasOneThrough(Meta::class, Item::class, 'todo_key', 'item_uuid', 'key', 'uuid');
     }
+
+    public function activities()
+    {
+        return $this->hasMany(Activity::class, 'todo_key', 'key');
+    }
+
+    public function latestActivity()
+    {
+        return $this->hasOne(Activity::class, 'todo_key', 'key')->latestOfMany();
+    }
 }
 
 class Item extends Model
@@ -196,6 +206,12 @@ class Tag extends Model
             'key', // parentKey
             'uuid'); // relatedKey
     }
+}
+
+class Activity extends Model
+{
+    public $table = 'activities';
+    protected $guarded = ['id'];
 }
 
 // Case-insensitive relationships

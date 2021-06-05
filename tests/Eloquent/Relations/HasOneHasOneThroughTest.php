@@ -60,7 +60,7 @@ class HasOneHasOneThroughTest extends TestBase
             'description' => 'Description for aaa',
         ]);
 
-        $meta = Meta::create([
+        Meta::create([
             'content' => 'meta content',
             'item_uuid' => 'aaa',
         ]);
@@ -82,7 +82,7 @@ class HasOneHasOneThroughTest extends TestBase
             $this->markTestSkipped("Relation HasOneThrough is not implemented");
         }
 
-        $todo = Todo::create([
+        Todo::create([
             'key' => 'todo-key-for-bbb',
             'title' => 'Todo list',
         ]);
@@ -94,7 +94,7 @@ class HasOneHasOneThroughTest extends TestBase
             'description' => 'Description for bbb',
         ]);
 
-        $meta = Meta::create([
+        Meta::create([
             'content' => 'meta content',
             'item_uuid' => 'bbb',
         ]);
