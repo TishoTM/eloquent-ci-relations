@@ -63,7 +63,7 @@ class Item extends Model
 {
     use \TishoTM\Eloquent\Concerns\HasCiRelationships;
 
-    ... relations
+    // ... relations
 }
 ```
 
