@@ -14,7 +14,7 @@ use TishoTM\Tests\CommentCi;
  */
 class MorphManyMorphToTest extends TestBase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

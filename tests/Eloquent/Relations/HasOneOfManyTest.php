@@ -15,7 +15,7 @@ class HasOneOfManyTest extends TestBase
     /**
      * Set up the DB tables.
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -76,7 +76,7 @@ class HasOneOfManyTest extends TestBase
         // the grouped records based on the DB type could return different parent KEY value
         // i.e
         // mysql 5.7 shows that the first record from the group is returned - "TODO-KEY"
-        // sqlite shows that the last record from the group is returned - "TODO-key"
+        // sqlite 3 shows that the last record from the group is returned - "TODO-key"
 
         // Since the PARENT-RELATED mapping occurs on the PHP side, then the relation would be NULL.
         $todo = Todo::with('latestActivity')->find('todo-key');

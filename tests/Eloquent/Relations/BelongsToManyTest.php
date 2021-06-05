@@ -15,7 +15,7 @@ class BelongsToManyTest extends TestBase
     /**
      * Set up the DB tables.
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
