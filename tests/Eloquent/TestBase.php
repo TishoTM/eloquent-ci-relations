@@ -6,7 +6,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 abstract class TestBase extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
