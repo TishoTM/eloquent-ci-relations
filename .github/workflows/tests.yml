@@ -1,0 +1,49 @@
+name: PHP Tests
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [7.4, 8.0, 8.1, 8.2, 8.3]
+        stability: [prefer-stable]
+
+    name: PHP ${{ matrix.php }}
+
+    steps:
+    - name: Install PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php }}
+        extensions: dom, curl, libxml, mbstring, pdo, sqlite, pdo_sqlite, pdo_mysql, :php-psr
+        tools: composer:v2
+        coverage: none
+
+    - uses: actions/checkout@v3
+
+    - name: Validate composer.json
+      run: composer validate --strict
+
+    - name: Update dependencies
+      run: composer update --prefer-dist --no-progress
+
+    - name: Check PHP Version
+      run: php -v
+
+    - name: Installed Illuminate Version
+      run: composer show illuminate/database | grep versions
+
+    - name: Run test suite
+      run: vendor/bin/phpunit

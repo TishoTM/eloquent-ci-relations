@@ -1,7 +1,7 @@
 # Eloquent case-insensitive relations
 
 <p align="left">
-<a href="https://travis-ci.org/TishoTM/eloquent-ci-relations"><img src="https://api.travis-ci.org/TishoTM/eloquent-ci-relations.svg?branch=master" alt="Build Status" /></a>
+<a href="https://github.com/TishoTM/eloquent-ci-relations/actions"><img src="https://github.com/TishoTM/eloquent-ci-relations/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/tishotm/eloquent-ci-relations"><img class="badge" src="https://poser.pugx.org/tishotm/eloquent-ci-relations/version" alt="Version" /></a>
 <a href="https://packagist.org/packages/tishotm/eloquent-ci-relations"><img class="badge" src="https://poser.pugx.org/tishotm/eloquent-ci-relations/downloads" alt="Total Downloads" /></a>
 <a href="https://packagist.org/packages/tishotm/eloquent-ci-relations"><img class="badge" src="https://poser.pugx.org/tishotm/eloquent-ci-relations/license" alt="License" /></a>
